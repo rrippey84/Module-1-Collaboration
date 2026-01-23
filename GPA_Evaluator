@@ -1,0 +1,40 @@
+# Rebecca Rippey
+# GPA_Evaluator.py
+# This will allow user to enter student names and GPAs into a list. It will evaluate
+# the GPA for Dean's list and Honor roll. User can enter unlimited number of
+# students and GPA to be evaluated and exit when they choose. Upon exit it will
+# display a list of results with student name, GPA and list status.
+
+DEANS_LIST_GPA = 3.5
+HONOR_ROLL_GPA = 3.25
+
+student_names = []
+student_gpas = []
+
+print("Enter student names and GPAs. Type 'zzz' as the name to stop.\n")
+
+while True:
+    name = input("Enter student name (or 'zzz' to quit): ")
+
+    if name.lower() == "zzz":
+        break
+
+    gpa = float(input(f"Enter GPA for {name}: "))
+
+    student_names.append(name)
+    student_gpas.append(gpa)
+
+print("\n--- Results ---")
+
+for i in range(len(student_names)):
+    name = student_names[i]
+    gpa = student_gpas[i]
+
+    if gpa >= DEANS_LIST_GPA:
+        status = "Dean's List"
+    elif gpa >= HONOR_ROLL_GPA:
+        status = "Honor Roll"
+    else:
+        status = "No List"
+
+    print(f"{name}: GPA {gpa} → {status}")
